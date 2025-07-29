@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.company.patientservice.dto.PatientRequestDTO;
 import com.company.patientservice.dto.PatientResponseDTO;
 import com.company.patientservice.exception.EmailAlreadyExistsException;
+import com.company.patientservice.exception.EmailNotFoundException;
 import com.company.patientservice.exception.PatientNotFoundException;
 import com.company.patientservice.mapper.PatientMapper;
 import com.company.patientservice.model.Patient;
@@ -66,6 +67,13 @@ public class PatientServiceImpl {
 
 		return PatientMapper.convertToPatientResponseDTO(patientRepo.findById(id)
 				.orElseThrow(() -> new PatientNotFoundException("Patient not found with ID: " + id)));
+	}
+	
+	public PatientResponseDTO getPatientByEmail(String email) {
+		// TODO Auto-generated method stub
+
+		return PatientMapper.convertToPatientResponseDTO(patientRepo.findByEmail(email)
+				.orElseThrow(() -> new EmailNotFoundException("Patient not found with email: " + email)));
 	}
 
 }

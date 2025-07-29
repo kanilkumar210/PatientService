@@ -45,6 +45,11 @@ public class PatientController {
 		return new ResponseEntity<PatientResponseDTO>(patientService.getPatientById(id), HttpStatus.OK);
 	}
 
+	@GetMapping("findByEmail/{email}")
+	public ResponseEntity<PatientResponseDTO> getPatientById(@PathVariable String email) {
+		return new ResponseEntity<PatientResponseDTO>(patientService.getPatientByEmail(email), HttpStatus.OK);
+	}
+
 	@PutMapping("updatePatient/{id}")
 	@Operation(summary = "Update Patient")
 	public ResponseEntity<PatientResponseDTO> updatePatient(@PathVariable int id,
