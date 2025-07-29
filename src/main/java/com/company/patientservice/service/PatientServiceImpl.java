@@ -61,4 +61,11 @@ public class PatientServiceImpl {
 		return "Patient deleted successfully with id: " + id;
 	}
 
+	public PatientResponseDTO getPatientById(int id) {
+		// TODO Auto-generated method stub
+
+		return PatientMapper.convertToPatientResponseDTO(patientRepo.findById(id)
+				.orElseThrow(() -> new PatientNotFoundException("Patient not found with ID: " + id)));
+	}
+
 }

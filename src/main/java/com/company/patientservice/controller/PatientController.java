@@ -40,6 +40,11 @@ public class PatientController {
 		return new ResponseEntity<List<PatientResponseDTO>>(patientService.getPatients(), HttpStatus.OK);
 	}
 
+	@GetMapping("findById/{id}")
+	public ResponseEntity<PatientResponseDTO> getPatientById(@PathVariable int id) {
+		return new ResponseEntity<PatientResponseDTO>(patientService.getPatientById(id), HttpStatus.OK);
+	}
+
 	@PutMapping("updatePatient/{id}")
 	@Operation(summary = "Update Patient")
 	public ResponseEntity<PatientResponseDTO> updatePatient(@PathVariable int id,
