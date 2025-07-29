@@ -58,7 +58,9 @@ public class PatientServiceImpl {
 		if (patientRepo.findById(id).isEmpty()) {
 			throw new PatientNotFoundException("Patient not found with ID: " + id);
 		}
-
+		else {
+			patientRepo.deleteById(id);
+		}
 		return "Patient deleted successfully with id: " + id;
 	}
 
