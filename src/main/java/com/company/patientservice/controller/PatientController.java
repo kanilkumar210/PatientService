@@ -41,11 +41,13 @@ public class PatientController {
 	}
 
 	@GetMapping("findById/{id}")
+	@Operation(summary = "Get Patient By Id")
 	public ResponseEntity<PatientResponseDTO> getPatientById(@PathVariable int id) {
 		return new ResponseEntity<PatientResponseDTO>(patientService.getPatientById(id), HttpStatus.OK);
 	}
 
 	@GetMapping("findByEmail/{email}")
+	@Operation(summary = "Get Patient By Email")
 	public ResponseEntity<PatientResponseDTO> getPatientById(@PathVariable String email) {
 		return new ResponseEntity<PatientResponseDTO>(patientService.getPatientByEmail(email), HttpStatus.OK);
 	}
